@@ -78,7 +78,6 @@ const deleteUserController = (req, res) => {
     });
 };
 
-
 module.exports = {
     createUserController,
     getAllUserController,

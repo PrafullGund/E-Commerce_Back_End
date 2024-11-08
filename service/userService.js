@@ -1,6 +1,21 @@
 const bcrypt = require('bcrypt');
 const dbConnection = require('../config/connection');
 
+const findOne = (email, callback) => {
+    const query = 'SELECT * FROM users WHERE email = ?';
+    dbConnection.query(query, [email], (error, result) => {
+        if (error) {
+            return callback(error, null);
+        }
+        // If user is found, return the first result
+        if (result.length > 0) {
+            callback(null, result[0]);
+        } else {
+            callback(null, null);
+        }
+    });
+};
+
 const createUserService = (userData, callback) => {
     const saltRounds = 10;
 
@@ -97,5 +112,6 @@ module.exports = {
     getAllUserService,
     getByIdUserService,
     updateUserService,
-    deleteUserService
+    deleteUserService,
+    findOne 
 };
