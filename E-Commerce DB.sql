@@ -29,3 +29,9 @@ CREATE TABLE Orders(
     deliveryAddress TEXT,
     FOREIGN KEY (productId) REFERENCES Products(id)
 );
+
+CREATE TABLE Category(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    categoryName VARCHAR(255),
+    description VARCHAR(255)
+);
